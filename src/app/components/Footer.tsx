@@ -1,54 +1,44 @@
+'use client';
 import React from 'react';
+import Link from 'next/link';
+import { FaFacebookF, FaYoutube, FaInstagram, FaTiktok } from 'react-icons/fa';
 
 const Footer = () => {
   return (
-    <footer className="  bg-black rounded-xl py-6">
+    <footer className="bg-black rounded-xl py-6 px-4">
       {/* Top Section */}
-      <div className="container mx-auto flex justify-between items-center px-4">
-        {/* Left Side: Logo */}
-        <div className="flex items-center">
-          <img src="/images/logo.jpeg" alt="Logo" className="w-12 h-12 mr-3 " />
-          <span className=" text-1xl text-white">Cooks<br/>Delight</span>
+      <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0">
+        
+        {/* Left: Logo */}
+        <div className="flex items-center space-x-3">
+          <img src="/images/logo.jpeg" alt="Logo" className="w-12 h-12 rounded-full" />
+          <span className="text-white text-xl leading-tight font-semibold">
+            Cooks<br />Delight
+          </span>
         </div>
 
-        {/* Center: Navigation Tabs */}
-        <nav className="flex space-x-6">
-          <a href="#" className="text-white">
-            HOME <span className="text-gray-300">|</span>
-          </a>
-          <a href="#" className="text-white">
-            RECIPE <span className="text-gray-300">|</span>
-          </a>
-          <a href="#" className="text-white">
-            COOKING TIPS <span className="text-gray-300">|</span>
-          </a>
-          <a href="#" className="text-white">
-            ABOUT US <span className="text-gray-300">|</span>
-          </a>
+        {/* Center: Navigation */}
+        <nav className="flex flex-wrap justify-center gap-4 text-white text-sm font-medium">
+          <Link href="/" className="hover:text-orange-500">HOME</Link>
+          <Link href="/recipes" className="hover:text-orange-500">RECIPE</Link>
+          <Link href="/tips" className="hover:text-orange-500">COOKING TIPS</Link>
+          <Link href="/about" className="hover:text-orange-500">ABOUT US</Link>
         </nav>
 
-        {/* Right Side: Social Media Icons */}
-        <div className="flex space-x-4">
-          <a href="#" className="text-white">
-            <i className="fab fa-facebook-f"></i>
-          </a>
-          <a href="#" className="text-white">
-            <i className="fab fa-youtube"></i>
-          </a>
-          <a href="#" className="text-white">
-            <i className="fab fa-instagram"></i>
-          </a>
-          <a href="#" className="text-white">
-            <i className="fab fa-tiktok"></i>
-          </a>
+        {/* Right: Social Icons */}
+        <div className="flex space-x-4 text-white text-xl">
+          <Link href="#"><FaFacebookF className="hover:text-orange-500" /></Link>
+          <Link href="#"><FaYoutube className="hover:text-orange-500" /></Link>
+          <Link href="#"><FaInstagram className="hover:text-orange-500" /></Link>
+          <Link href="#"><FaTiktok className="hover:text-orange-500" /></Link>
         </div>
       </div>
 
-      {/* Divider Line */}
-      <div className="border-t border-gray ml-14 mr-14 mx-3 my-3"></div>
+      {/* Divider */}
+      <div className="border-t border-gray-700 mt-6 mb-4"></div>
 
       {/* Bottom Section */}
-      <div className="text-center font-bold text-blue-500 font-serif">
+      <div className="text-center text-sm text-blue-500 font-serif font-bold">
         <span className="text-orange-500">Mahnoor</span> Devs
       </div>
     </footer>

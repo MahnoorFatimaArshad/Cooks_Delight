@@ -1,41 +1,43 @@
-"use client";
-import { useState } from "react";
-import Link from "next/link";
-import { FaSearch, FaBars, FaTimes } from "react-icons/fa";
+'use client';
+
+import { useState } from 'react';
+import Link from 'next/link';
+import { FaSearch, FaBars, FaTimes } from 'react-icons/fa';
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const routes = [
-    { name: "HOME", path: "/" },
-    { name: "RECIPES", path: "/recipes" },
-    { name: "COOKING TIPS", path: "/Cooking-Tips" }, // ✅ Corrected Route
-    { name: "ABOUT", path: "/about" },
+    { name: 'HOME', path: '/' },
+    { name: 'RECIPES', path: '/recipes' },
+    { name: 'COOKING TIPS', path: '/Cooking-Tips' },
+    { name: 'ABOUT', path: '/about' },
   ];
 
   return (
-    <nav className="bg-gray-100 border border-gray-400 rounded-full shadow-md mt-6 w-full md:max-w-6xl mx-auto flex items-center justify-between px-4 py-2">
-      {/* Left Side: Logo */}
+    <nav className="bg-gray-100 border border-gray-300 rounded-full shadow-md mt-6 w-full max-w-6xl mx-auto flex items-center justify-between px-4 py-2 relative z-50">
+      
+      {/* Logo */}
       <div className="flex items-center">
-        <img src="/images/logo.jpeg" alt="Logo" className="w-10 h-10 mr-2" />
-        <span className="text-lg font-bold text-black">Cooks Delight</span>
+        <img src="/images/logo.jpeg" alt="Logo" className="w-10 h-10 mr-2 rounded-full" />
+        <span className="text-lg font-bold text-black leading-tight">Cooks Delight</span>
       </div>
 
-      {/* Center: Navigation Links */}
+      {/* Desktop Nav */}
       <ul className="hidden md:flex space-x-6">
-        {routes.map((route, index) => (
-          <li key={index}>
-            <Link href={route.path}>
-              <span className="text-gray-500 font-semibold hover:text-black hover:border-b-2 hover:border-red-500 transition duration-300 px-2 py-1">
-                {route.name}
+        {routes.map(({ name, path }) => (
+          <li key={path}>
+            <Link href={path}>
+              <span className="text-gray-600 font-medium hover:text-black hover:border-b-2 hover:border-red-500 transition duration-300 px-2 py-1">
+                {name}
               </span>
             </Link>
           </li>
         ))}
       </ul>
 
-      {/* Right Side: Search and Subscribe */}
-      <div className="flex items-center space-x-4">
+      {/* Right: Search + Subscribe */}
+      <div className="hidden md:flex items-center space-x-4">
         <button className="text-black hover:text-red-500 transition duration-300">
           <FaSearch size={18} />
         </button>
@@ -44,23 +46,31 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* Hamburger Menu (Mobile) */}
+      {/* Mobile Menu Toggle */}
       <button className="md:hidden text-black p-2" onClick={() => setMenuOpen(!menuOpen)}>
         {menuOpen ? <FaTimes size={22} /> : <FaBars size={22} />}
       </button>
 
-      {/* Mobile Menu */}
+      {/* Mobile Dropdown */}
       {menuOpen && (
-        <ul className="absolute top-full left-0 w-full bg-gray-100 shadow-md rounded-md mt-2 flex flex-col space-y-2 p-4 md:hidden">
-          {routes.map((route, index) => (
-            <li key={index}>
-              <Link href={route.path}>
-                <span className="block text-gray-500 text-center font-semibold hover:text-black transition duration-300 py-2">
-                  {route.name}
+        <ul className="absolute top-full left-0 w-full bg-gray-100 shadow-lg rounded-md mt-2 flex flex-col space-y-2 p-4 md:hidden z-40">
+          {routes.map(({ name, path }) => (
+            <li key={path}>
+              <Link href={path} onClick={() => setMenuOpen(false)}>
+                <span className="block text-center text-gray-700 font-semibold hover:text-red-600 transition duration-300">
+                  {name}
                 </span>
               </Link>
             </li>
           ))}
+          <li className="flex justify-center items-center space-x-4 pt-2 border-t border-gray-300 mt-2">
+            <button className="text-black hover:text-red-500 transition duration-300">
+              <FaSearch size={18} />
+            </button>
+            <button className="text-black border border-black px-3 py-1 rounded-full hover:bg-black hover:text-white transition duration-300">
+              Subscribe
+            </button>
+          </li>
         </ul>
       )}
     </nav>
