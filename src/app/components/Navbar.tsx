@@ -9,7 +9,7 @@ export default function Navbar() {
   const routes = [
     { name: "HOME", path: "/" },
     { name: "RECIPES", path: "/recipes" },
-    { name: "COOKING TIPS", path: "/cooking-tips" }, // ✅ Corrected Route
+    { name: "COOKING TIPS", path: "/Cooking-Tips" }, // ✅ Corrected Route
     { name: "ABOUT", path: "/about" },
   ];
 
