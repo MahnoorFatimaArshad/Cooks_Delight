@@ -1,4 +1,3 @@
-// components/RecipeList.tsx
 import RecipeCard from "./RecipeCard";
 
 const RecipeList = () => {
@@ -61,9 +60,9 @@ const RecipeList = () => {
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-6">
-      {recipeData.map((recipe, index) => (
+      {recipeData.map((recipe) => (
         <RecipeCard
-          key={index}
+          key={recipe.title} // Best to use a unique identifier here
           title={recipe.title}
           image={recipe.image}
           description={recipe.description}

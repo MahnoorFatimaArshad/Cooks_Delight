@@ -1,7 +1,8 @@
-'use client';
-import React from 'react';
-import Link from 'next/link';
-import { FaFacebookF, FaYoutube, FaInstagram, FaTiktok } from 'react-icons/fa';
+"use client";
+import React from "react";
+import Link from "next/link";
+import { FaFacebookF, FaYoutube, FaInstagram, FaTiktok } from "react-icons/fa";
+import Image from "next/image"; // Importing Next.js Image component for optimized image handling
 
 const Footer = () => {
   return (
@@ -11,7 +12,13 @@ const Footer = () => {
         
         {/* Left: Logo */}
         <div className="flex items-center space-x-3">
-          <img src="/images/logo.jpeg" alt="Logo" className="w-12 h-12 rounded-full" />
+          <Image
+            src="/images/logo.jpeg"
+            alt="Cooks Delight Logo" // Improved alt text for better accessibility
+            width={48}
+            height={48}
+            className="rounded-full"
+          />
           <span className="text-white text-xl leading-tight font-semibold">
             Cooks<br />Delight
           </span>
@@ -27,10 +34,34 @@ const Footer = () => {
 
         {/* Right: Social Icons */}
         <div className="flex space-x-4 text-white text-xl">
-          <Link href="#"><FaFacebookF className="hover:text-orange-500" /></Link>
-          <Link href="#"><FaYoutube className="hover:text-orange-500" /></Link>
-          <Link href="#"><FaInstagram className="hover:text-orange-500" /></Link>
-          <Link href="#"><FaTiktok className="hover:text-orange-500" /></Link>
+          <Link
+            href="https://facebook.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaFacebookF className="hover:text-orange-500" />
+          </Link>
+          <Link
+            href="https://youtube.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaYoutube className="hover:text-orange-500" />
+          </Link>
+          <Link
+            href="https://instagram.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaInstagram className="hover:text-orange-500" />
+          </Link>
+          <Link
+            href="https://tiktok.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaTiktok className="hover:text-orange-500" />
+          </Link>
         </div>
       </div>
 
